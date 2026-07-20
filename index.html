@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>For My Special One ❤️</title>
+    <style>
+        body { margin: 0; background: radial-gradient(circle, #240b36, #c31432); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; overflow-x: hidden; }
+        
+        /* हार्ट एनीमेशन स्टाइल */
+        .heart-particle { position: absolute; color: #ff477e; font-size: 20px; z-index: 0; animation: rise 6s linear infinite; pointer-events: none; }
+        @keyframes rise { 0% { transform: translateY(100vh); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+
+        #lock-screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 1; }
+        .circular-img { width: 180px; height: 180px; border-radius: 50%; border: 5px solid #ff477e; margin-bottom: 20px; object-fit: cover; box-shadow: 0 0 20px #ff477e; }
+        .input-box { padding: 12px; border-radius: 25px; border: none; width: 250px; text-align: center; margin-bottom: 15px; }
+        #main-page { display: none; padding: 40px 20px; position: relative; z-index: 1; }
+        .glass { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); max-width: 700px; margin: auto; }
+        .btn { padding: 12px 25px; margin: 10px; border: none; border-radius: 50px; background: #ff477e; color: white; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-special { background: linear-gradient(45deg, #ff477e, #ff0055); box-shadow: 0 0 15px #ff477e; }
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+        .gallery img { width: 120px; height: 120px; border-radius: 10px; object-fit: cover; }
+        .proposal-img { width: 280px; margin: 20px 0; animation: float 3s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    </style>
+</head>
+<body>
+
+    <!-- दिल उड़ाने वाला फंक्शन -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.className = "heart-particle";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+
+    <div id="lock-screen">
+        <img src="profile.jpg" class="circular-img">
+        <h1>Welcome Aastha ❤️</h1>
+        <input type="password" id="pass" class="input-box" placeholder="Password (Aastha)">
+        <button class="btn" onclick="checkPass()">Unlock</button>
+        <p id="error"></p>
+    </div>
+
+    <div id="main-page">
+        <h1>For The Most Beautiful Girl, Aastha ❤️</h1>
+        <button class="btn" onclick="show('beauty')">Your Beauty ❤️</button>
+        <button class="btn" onclick="show('innocence')">Your Innocence 🌸</button>
+        <button class="btn btn-special" onclick="show('proposal')">Special Message 💌</button>
+        <button class="btn" onclick="show('feelings')">My Feelings ✨</button>
+
+        <div id="content" class="glass" style="display:none; margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        function checkPass() {
+            if(document.getElementById('pass').value === "Aastha") {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-page').style.display = 'block';
+            } else {
+                document.getElementById('error').innerText = "Oops! Galat Password ❤️";
+            }
+        }
+
+        function show(type) {
+            const area = document.getElementById('content');
+            area.style.display = 'block';
+            
+            if(type === 'beauty') {
+                area.innerHTML = `<h3>Your Beauty</h3><p>तुम्हारी खूबसूरती का तो क्या कहना, तुम जब हँसती हो तो जैसे आसमान से सितारे ज़मीन पर आ जाते हैं। तुम्हारी आँखों में वो गहराई है जिसमें खो जाने का मन करता है।</p><img src="photo1.jpg" style="width:200px; border-radius:15px;">`;
+            } 
+            else if(type === 'innocence') {
+                area.innerHTML = `<h3>Your Innocence</h3><p>तुम्हारी मासूमियत ही तुम्हारी सबसे बड़ी ताकत है। तुम जैसी हो, वैसी ही दिल के बहुत करीब हो।</p><div class="gallery"><img src="photo2.jpg"><img src="photo3.jpg"><img src="photo4.jpg"><img src="photo5.jpg"></div>`;
+            }
+            else if(type === 'proposal') {
+                area.innerHTML = `<h3>Dil Ki Baat</h3>
+                <img src="proposal.png" class="proposal-img">
+                <p>मैं तुमसे आज अपने दिल की बात कहना चाहता हूँ, जो शायद मैं सामने खड़े होकर डायरेक्ट नहीं बोल पा रहा था। मेरी इसी घबराहट और तुम्हारे लिए मेरी सच्ची फीलिंग्स की वजह से मैंने ये वेबपेज बनाया है, ताकि मैं अपने दिल का हाल तुम तक पहुँचा सकूँ।</p>`;
+            }
+            else if(type === 'feelings') {
+                area.innerHTML = `<h3>My Deep Feelings</h3>
+                <img src="photo6.jpg" style="width:200px; border-radius:15px; margin-bottom:15px;">
+                <p style="text-align: left; font-size: 0.9rem; line-height: 1.6;">
+                          1. तुम मेरी उस मुस्कुराहट की वजह हो, जिसे मैं सबसे छुपा कर रखता हूँ।<br>
+                    2. तुम्हारे बिना मेरा दिन अधूरा है और तुम्हारे साथ मेरी पूरी कायनात।<br>
+                    3. मुझे नहीं पता था कि मैं किसी को इतना प्यार कर सकता हूँ, जितना तुमसे करता हूँ।<br>
+                    4. तुम्हारी बातें मेरे दिल को सुकून देने वाली सबसे बेहतरीन दवा हैं।<br>
+                    5. तुम मेरी ज़िन्दगी की वो किताब हो, जिसे मैं हर पल पढ़ना चाहता हूँ।<br>
+                    6. तुम्हारे चेहरे पर एक छोटी सी मुस्कान देख कर मेरी दुनिया आबाद हो जाती है।<br>
+                    7. तुम सिर्फ मेरी दोस्त नहीं, तुम मेरी वो खुशी हो जिसे मैं हमेशा महसूस करता हूँ।<br>
+                    8. अक्सर सोचता हूँ कि तुमसे पहले मेरी लाइफ कितनी बोरिंग थी।<br>
+                    9. तुम्हारे हर अंदाज़ पर मुझे बार-बार तुमसे प्यार हो जाता है।<br>
+                    10. तुम मेरी वो धड़कन हो जो बस तुम्हारे नाम पर ही चलती है।<br>
+                    11. क्या तुम जानती हो कि तुम दुनिया की सबसे प्यारी और हसीन लड़की हो?<br>
+                    12. तुम्हारी मासूमियत ने मेरा दिल बहुत पहले ही जीत लिया था।<br>
+                    13. कभी-कभी डर लगता है कहीं तुम सपना न हो, इसलिए तुम्हें बार-बार देखता हूँ।<br>
+                    14. तुम्हारी आवाज़ मेरे कानों के लिए किसी सुकून भरे गाने जैसी है।<br>
+                    15. मेरा दिल तुमसे बात करने का बहाना ढूंढता है, ताकि तुम्हें और समझ सकूँ।<br>
+                    16. तुम वो हो जिसकी कमी मुझे हर पल खलती है।<br>
+                    17. तुमसे जुड़ा हर याद मेरे लिए सबसे कीमती खज़ाना है।<br>
+                    18. मेरी हर दुआ में सिर्फ तुम्हारा नाम ही तो आता है।<br>
+                    19. तुम मेरी वो जन्नत हो, जिसे पाने के लिए मैंने कई बार खुदा से गुज़ारिश की है।<br>
+                    20. बस मेरी हो जाओ, क्योंकि तुम्हारे बिना मेरा कोई वजूद नहीं है।
+                </p>`;
+            }
+        }
+    </script>
+</body>
+</html>
